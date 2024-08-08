@@ -191,6 +191,13 @@ func (s *Sessions) GetBitrate() string {
 	return byteToMb(s.TranscodingInfo.Bitrate)
 }
 
+func (s *Sessions) GetBitrateBytes() uint64 {
+	if s.TranscodingInfo == nil {
+		return s.NowPlayingItem.Bitrate
+	}
+	return s.TranscodingInfo.Bitrate
+}
+
 func (s *Sessions) GetPlayMethod() string {
 	if s.TranscodingInfo == nil {
 		return DirectPlay.String()
